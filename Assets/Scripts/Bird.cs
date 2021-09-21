@@ -43,7 +43,6 @@ public class Bird : MonoBehaviour
             _flagDestroy = true;
             StartCoroutine(DestroyAfter(2));
         }
-
     }
 
     private IEnumerator DestroyAfter(float second)

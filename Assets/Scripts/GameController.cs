@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class GameController : MonoBehaviour
     public List<Enemy> Enemies;
     private YellowBird _shotBird;
     public BoxCollider2D TapCollider;
+
+    public GameObject gameEnd, gameWin;
 
     private bool _isGameEnded = false;
 
@@ -35,13 +38,20 @@ public class GameController : MonoBehaviour
         TapCollider.enabled = false;
         if (_isGameEnded)
         {
-            return;
+            gameWin.SetActive(true);
         }
 
         Birds.RemoveAt(0);
 
         if (Birds.Count > 0)
+        {
             SlingShooter.InitiateBird(Birds[0]);
+        }
+        else
+        {
+            gameEnd.SetActive(true);
+        }
+            
     }
 
     public void CheckGameEnd(GameObject destroyedEnemy)
@@ -74,5 +84,18 @@ public class GameController : MonoBehaviour
         {
             _shotBird.OnTap();
         }
+    }
+
+    public void LoadScene(string sceneName)
+    {
+        if (sceneName == "Exit")
+        {
+            Application.Quit();
+        }
+        else
+        {
+            SceneManager.LoadScene(sceneName);
+        }
+        
     }
 }

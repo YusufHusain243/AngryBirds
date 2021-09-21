@@ -1,4 +1,4 @@
 # AngryBirds
 
-NAMA     : YUSUF HUSAIN
+NAMA     : YUSUF HUSAIN \n
 ID AGATE : 238
